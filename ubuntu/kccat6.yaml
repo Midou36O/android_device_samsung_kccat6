@@ -1,0 +1,6 @@
+kccat6:
+        DeviceType: handset
+        GridUnit: 18
+        WebkitDpr: 2
+        PrimaryOrientation: Portrait
+        BacklightSysfsPath: /sys/class/leds/lcd-backlight/brightness

@@ -33,5 +33,29 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 TARGET_BOOTANIMATION_HALF_RES := true
 
+# Ubuntu Touch additional packages    
+
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-service \
+    android.hardware.media.omx@1.0-impl \
+    android.hardware.health@1.0 \
+    android.hardware.gnss@1.1 \
+    android.hardware.keymaster@4.0 \
+    rild \
+    libnetutils \
+    android.hardware.radio@1.0 \
+    android.hardware.radio@1.2
+
+### Ubuntu Touch ###
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/70-kccat6.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/ubuntu/kccat6.yaml:system/halium/etc/deviceinfo/default.yaml \
+    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
+    $(LOCAL_PATH)/ubuntu/ril_subscription.conf:system/halium/etc/ofono/ril_subscription.conf \
+    $(LOCAL_PATH)/ubuntu/repowerd.override:system/halium/etc/init/repowerd.override \
+    $(LOCAL_PATH)/ubuntu/crash_dump.arm.policy:system/etc/seccomp_policy/crash_dump.arm.policy
+    #$(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf 
+### End Ubuntu Touch ###
+
 # common apq8084
 $(call inherit-product, device/samsung/apq8084-common/apq8084.mk)
